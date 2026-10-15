@@ -224,7 +224,7 @@
       }
 
       document.getElementById('gu').textContent = c.gu || '';
-      document.getElementById('title').textContent = c.title || (c.type === 'blank' ? '' : '待写的一章');
+      document.getElementById('title').textContent = c.title || (c.type === 'chat' || c.type === 'blank' ? '' : '待写的一章');
       document.getElementById('no').textContent = 'No.' + ch;
       document.getElementById('quote').textContent = c.quote || '';
       document.getElementById('date').textContent = c.date;
