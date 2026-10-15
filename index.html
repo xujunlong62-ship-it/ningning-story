@@ -101,6 +101,24 @@
     letter-spacing: 0.25em;
     color: var(--mist);
   }
+  /* 柠柠变形风格池：每次扫码随机换装，可爱/活泼/感动轮换 */
+  .nn span { display:inline-block; }
+  .nn.v1 span { font-family:"YouYuan","幼圆",sans-serif; color:#E08E79; font-size:1.25em; }
+  .nn.v2 span { font-family:"KaiTi","楷体",serif; color:#A9744F; font-size:1.2em; }
+  .nn.v3 span { font-family:"YouYuan","幼圆",sans-serif; color:transparent;
+                -webkit-text-stroke:1px #40342A; font-size:1.25em; }
+  .nn.v4 span { font-family:"YouYuan","幼圆",sans-serif; font-size:1.25em; }
+  .nn.v4 span:nth-child(1) { color:#E08E79; transform:rotate(-7deg) translateY(-2px); }
+  .nn.v4 span:nth-child(2) { color:#7FA08C; transform:rotate(7deg) translateY(2px); }
+  .nn.v5 span { font-size:1.25em; background:linear-gradient(180deg,#E08E79,#A9744F);
+                -webkit-background-clip:text; background-clip:text; color:transparent; }
+  .nn.v6 span { font-family:"KaiTi","楷体",serif; font-size:1.25em; color:#A9744F; }
+  .nn.v6 span:nth-child(1) { transform:translateY(-4px); }
+  .nn.v6 span:nth-child(2) { transform:translateY(4px); }
+  .nn.v7 span { font-family:"KaiTi","楷体",serif; color:#B9A896;
+                font-size:1.15em; letter-spacing:.5em; opacity:.85; }
+  .nn.v8 span { font-family:"YouYuan","幼圆",sans-serif; color:#E08E79; font-size:1.25em;
+                text-shadow:2px 2px 0 #F3E2D6; }
   /* player */
   .player { display: none; }
   .player.on { display: block; }
@@ -148,7 +166,7 @@
   <div class="frame">
     <div class="kicker" id="kick">睡前故事电台</div>
     <div class="gu" id="gu"></div>
-    <div class="dedic">讲给柠柠的</div>
+    <div class="dedic">讲给<span id="ningning" class="nn"></span>的</div>
     <h1 id="title"></h1>
     <div class="no" id="no"></div>
 
@@ -186,6 +204,20 @@
       g.appendChild(l);
       x += 5 + (seed % 7);
     }
+  })();
+
+  // 柠柠换装：随机挑一个风格，连续两次不重复
+  (function () {
+    const el = document.getElementById('ningning');
+    if (!el) return;
+    el.innerHTML = '<span>柠</span><span>柠</span>';
+    let v;
+    try {
+      const last = sessionStorage.getItem('nnv');
+      do { v = 'v' + (1 + Math.floor(Math.random() * 8)); } while (v === last);
+      sessionStorage.setItem('nnv', v);
+    } catch (e) { v = 'v' + (1 + Math.floor(Math.random() * 8)); }
+    el.classList.add(v);
   })();
 
   const params = new URLSearchParams(location.search);
