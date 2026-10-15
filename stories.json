@@ -383,7 +383,80 @@
       "style": "story"
     }
   ],
-  "extras": [],
+  "extras": [
+    {
+      "id": "X01",
+      "type": "chat",
+      "style": "chat",
+      "title": "",
+      "quote": "",
+      "date": "",
+      "audio": null
+    },
+    {
+      "id": "X02",
+      "type": "chat",
+      "style": "chat",
+      "title": "",
+      "quote": "",
+      "date": "",
+      "audio": null
+    },
+    {
+      "id": "X03",
+      "type": "chat",
+      "style": "chat",
+      "title": "",
+      "quote": "",
+      "date": "",
+      "audio": null
+    },
+    {
+      "id": "X04",
+      "type": "chat",
+      "style": "chat",
+      "title": "",
+      "quote": "",
+      "date": "",
+      "audio": null
+    },
+    {
+      "id": "X05",
+      "type": "chat",
+      "style": "chat",
+      "title": "",
+      "quote": "",
+      "date": "",
+      "audio": null
+    },
+    {
+      "id": "X06",
+      "type": "chat",
+      "style": "chat",
+      "title": "",
+      "quote": "",
+      "date": "",
+      "audio": null
+    },
+    {
+      "id": "X07",
+      "type": "chat",
+      "style": "chat",
+      "title": "",
+      "quote": "",
+      "date": "",
+      "audio": null
+    },
+    {
+      "id": "X08",
+      "type": "chat",
+      "style": "chat",
+      "title": "",
+      "quote": "",
+      "date": "",
+      "audio": null
+    }
+  ],
   "blanks": [
     {
       "id": "39",
@@ -451,14 +524,6 @@
     },
     {
       "id": "47",
-      "type": "blank",
-      "title": "",
-      "quote": "",
-      "date": "",
-      "audio": null
-    },
-    {
-      "id": "48",
       "type": "blank",
       "title": "",
       "quote": "",
