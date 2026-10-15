@@ -1,0 +1,469 @@
+{
+  "title": "柠柠专属的故事本",
+  "subtitle": "讲给你听",
+  "chapters": [
+    {
+      "id": "01",
+      "gu": "希望蛊",
+      "title": "困境和希望",
+      "quote": "",
+      "date": "",
+      "audio": null,
+      "type": "story",
+      "style": "story"
+    },
+    {
+      "id": "02",
+      "gu": "",
+      "title": "规矩",
+      "quote": "",
+      "date": "",
+      "audio": null,
+      "type": "story",
+      "style": "story"
+    },
+    {
+      "id": "03",
+      "gu": "智慧蛊",
+      "title": "智慧蛊逃脱",
+      "quote": "",
+      "date": "",
+      "audio": null,
+      "type": "story",
+      "style": "story"
+    },
+    {
+      "id": "04",
+      "gu": "态度蛊",
+      "title": "态度是心的面具",
+      "quote": "",
+      "date": "",
+      "audio": null,
+      "type": "story",
+      "style": "story"
+    },
+    {
+      "id": "05",
+      "gu": "",
+      "title": "太日阳莽和古月阴荒",
+      "quote": "",
+      "date": "",
+      "audio": null,
+      "type": "story",
+      "style": "story"
+    },
+    {
+      "id": "06",
+      "gu": "",
+      "title": "天地四猴酒",
+      "quote": "",
+      "date": "",
+      "audio": null,
+      "type": "story",
+      "style": "story"
+    },
+    {
+      "id": "07",
+      "gu": "",
+      "title": "平凡和名声",
+      "quote": "",
+      "date": "",
+      "audio": null,
+      "type": "story",
+      "style": "story"
+    },
+    {
+      "id": "08",
+      "gu": "",
+      "title": "虚荣和永生",
+      "quote": "",
+      "date": "",
+      "audio": null,
+      "type": "story",
+      "style": "story"
+    },
+    {
+      "id": "09",
+      "gu": "",
+      "title": "九天的荣耀",
+      "quote": "",
+      "date": "",
+      "audio": null,
+      "type": "story",
+      "style": "story"
+    },
+    {
+      "id": "10",
+      "gu": "",
+      "title": "生死门之行",
+      "quote": "",
+      "date": "",
+      "audio": null,
+      "type": "story",
+      "style": "story"
+    },
+    {
+      "id": "11",
+      "gu": "成功蛊",
+      "title": "石人，你阻挡了我成功的路",
+      "quote": "",
+      "date": "",
+      "audio": null,
+      "type": "story",
+      "style": "story"
+    },
+    {
+      "id": "12",
+      "gu": "",
+      "title": "最大的失败就是失去自我",
+      "quote": "",
+      "date": "",
+      "audio": null,
+      "type": "story",
+      "style": "story"
+    },
+    {
+      "id": "13",
+      "gu": "",
+      "title": "人生的意义",
+      "quote": "",
+      "date": "",
+      "audio": null,
+      "type": "story",
+      "style": "story"
+    },
+    {
+      "id": "14",
+      "gu": "生命蛊",
+      "title": "蔚蓝生命",
+      "quote": "",
+      "date": "",
+      "audio": null,
+      "type": "story",
+      "style": "story"
+    },
+    {
+      "id": "15",
+      "gu": "",
+      "title": "人生路",
+      "quote": "",
+      "date": "",
+      "audio": null,
+      "type": "story",
+      "style": "story"
+    },
+    {
+      "id": "16",
+      "gu": "",
+      "title": "逐梦",
+      "quote": "",
+      "date": "",
+      "audio": null,
+      "type": "story",
+      "style": "story"
+    },
+    {
+      "id": "17",
+      "gu": "",
+      "title": "自己的路",
+      "quote": "",
+      "date": "",
+      "audio": null,
+      "type": "story",
+      "style": "story"
+    },
+    {
+      "id": "18",
+      "gu": "",
+      "title": "伟大",
+      "quote": "",
+      "date": "",
+      "audio": null,
+      "type": "story",
+      "style": "story"
+    },
+    {
+      "id": "19",
+      "gu": "",
+      "title": "失败的价值",
+      "quote": "",
+      "date": "",
+      "audio": null,
+      "type": "story",
+      "style": "story"
+    },
+    {
+      "id": "20",
+      "gu": "",
+      "title": "羽民的自由",
+      "quote": "",
+      "date": "",
+      "audio": null,
+      "type": "story",
+      "style": "story"
+    },
+    {
+      "id": "21",
+      "gu": "",
+      "title": "小人的痛哭",
+      "quote": "",
+      "date": "",
+      "audio": null,
+      "type": "story",
+      "style": "story"
+    },
+    {
+      "id": "22",
+      "gu": "恐惧蛊",
+      "title": "恐惧",
+      "quote": "",
+      "date": "",
+      "audio": null,
+      "type": "story",
+      "style": "story"
+    },
+    {
+      "id": "23",
+      "gu": "",
+      "title": "大小",
+      "quote": "",
+      "date": "",
+      "audio": null,
+      "type": "story",
+      "style": "story"
+    },
+    {
+      "id": "24",
+      "gu": "勇气蛊",
+      "title": "勇气",
+      "quote": "",
+      "date": "",
+      "audio": null,
+      "type": "story",
+      "style": "story"
+    },
+    {
+      "id": "25",
+      "gu": "爱情蛊",
+      "title": "爱情",
+      "quote": "",
+      "date": "",
+      "audio": null,
+      "type": "story",
+      "style": "story"
+    },
+    {
+      "id": "26",
+      "gu": "",
+      "title": "坚持",
+      "quote": "",
+      "date": "",
+      "audio": null,
+      "type": "story",
+      "style": "story"
+    },
+    {
+      "id": "27",
+      "gu": "财富蛊",
+      "title": "财富",
+      "quote": "",
+      "date": "",
+      "audio": null,
+      "type": "story",
+      "style": "story"
+    },
+    {
+      "id": "28",
+      "gu": "",
+      "title": "宿命成疯",
+      "quote": "",
+      "date": "",
+      "audio": null,
+      "type": "story",
+      "style": "story"
+    },
+    {
+      "id": "29",
+      "gu": "自由蛊",
+      "title": "追逐自由",
+      "quote": "",
+      "date": "",
+      "audio": null,
+      "type": "story",
+      "style": "story"
+    },
+    {
+      "id": "30",
+      "gu": "",
+      "title": "仇恨之路",
+      "quote": "",
+      "date": "",
+      "audio": null,
+      "type": "story",
+      "style": "story"
+    },
+    {
+      "id": "31",
+      "gu": "",
+      "title": "强弱",
+      "quote": "",
+      "date": "",
+      "audio": null,
+      "type": "story",
+      "style": "story"
+    },
+    {
+      "id": "32",
+      "gu": "",
+      "title": "人生最大的困境",
+      "quote": "",
+      "date": "",
+      "audio": null,
+      "type": "story",
+      "style": "story"
+    },
+    {
+      "id": "33",
+      "gu": "",
+      "title": "大力真武",
+      "quote": "",
+      "date": "",
+      "audio": null,
+      "type": "story",
+      "style": "story"
+    },
+    {
+      "id": "34",
+      "gu": "努力蛊",
+      "title": "努力和能力",
+      "quote": "",
+      "date": "",
+      "audio": null,
+      "type": "story",
+      "style": "story"
+    },
+    {
+      "id": "35",
+      "gu": "骄傲蛊",
+      "title": "乾坤晶壁",
+      "quote": "",
+      "date": "",
+      "audio": null,
+      "type": "story",
+      "style": "story"
+    },
+    {
+      "id": "36",
+      "gu": "",
+      "title": "元境",
+      "quote": "",
+      "date": "",
+      "audio": null,
+      "type": "story",
+      "style": "story"
+    },
+    {
+      "id": "37",
+      "gu": "谎言蛊",
+      "title": "光阴和事实",
+      "quote": "",
+      "date": "",
+      "audio": null,
+      "type": "story",
+      "style": "story"
+    },
+    {
+      "id": "38",
+      "gu": "实践蛊",
+      "title": "实践认识自己",
+      "quote": "",
+      "date": "",
+      "audio": null,
+      "type": "story",
+      "style": "story"
+    }
+  ],
+  "extras": [],
+  "blanks": [
+    {
+      "id": "39",
+      "type": "blank",
+      "title": "",
+      "quote": "",
+      "date": "",
+      "audio": null
+    },
+    {
+      "id": "40",
+      "type": "blank",
+      "title": "",
+      "quote": "",
+      "date": "",
+      "audio": null
+    },
+    {
+      "id": "41",
+      "type": "blank",
+      "title": "",
+      "quote": "",
+      "date": "",
+      "audio": null
+    },
+    {
+      "id": "42",
+      "type": "blank",
+      "title": "",
+      "quote": "",
+      "date": "",
+      "audio": null
+    },
+    {
+      "id": "43",
+      "type": "blank",
+      "title": "",
+      "quote": "",
+      "date": "",
+      "audio": null
+    },
+    {
+      "id": "44",
+      "type": "blank",
+      "title": "",
+      "quote": "",
+      "date": "",
+      "audio": null
+    },
+    {
+      "id": "45",
+      "type": "blank",
+      "title": "",
+      "quote": "",
+      "date": "",
+      "audio": null
+    },
+    {
+      "id": "46",
+      "type": "blank",
+      "title": "",
+      "quote": "",
+      "date": "",
+      "audio": null
+    },
+    {
+      "id": "47",
+      "type": "blank",
+      "title": "",
+      "quote": "",
+      "date": "",
+      "audio": null
+    },
+    {
+      "id": "48",
+      "type": "blank",
+      "title": "",
+      "quote": "",
+      "date": "",
+      "audio": null
+    }
+  ]
+}
