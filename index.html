@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>柠柠专属的故事本</title>
+<style>
+  :root {
+    --paper: #F7F4EC;
+    --ink: #1C1B18;
+    --mist: #7A8B99;
+    --line: #D8D2C4;
+    --accent: #7A8B99;
+  }
+  /* 番外分风格主题（由 style 字段驱动） */
+  body.st-sweet   { --accent: #B98686; --line: #E3D5D2; }  /* 蜜糖 · 豆沙 */
+  body.st-funny   { --accent: #B08A3E; --line: #E4DCC8; }  /* 逗趣 · 杏黄 */
+  body.st-serious { --accent: #6B7F94; --line: #D3DAE0; }  /* 谈心 · 雾蓝 */
+  body.st-night   { --accent: #6A6488; --line: #DBD8E4; }  /* 晚安 · 暮紫 */
+  body.st-story   { --accent: #7A8B99; }                    /* 正篇 · 原灰蓝 */
+  body.st-sweet .gu, body.st-funny .gu, body.st-serious .gu,
+  body.st-night .gu, body.st-sweet .no, body.st-funny .no,
+  body.st-serious .no, body.st-night .no { color: var(--accent); }
+  body.st-sweet .bar > i, body.st-funny .bar > i,
+  body.st-serious .bar > i, body.st-night .bar > i { background: var(--accent); }
+  body.st-sweet #bars, body.st-funny #bars,
+  body.st-serious #bars, body.st-night #bars { stroke: var(--accent); }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { height: 100%; }
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: "Songti SC", "Noto Serif SC", "SimSun", serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    padding: 48px 32px;
+    text-align: center;
+  }
+  .frame {
+    max-width: 420px;
+    width: 100%;
+  }
+  .kicker {
+    font-size: 12px;
+    letter-spacing: 0.5em;
+    color: var(--mist);
+    margin-bottom: 40px;
+  }
+  .gu {
+    font-size: 15px;
+    letter-spacing: 0.4em;
+    color: var(--mist);
+    margin-bottom: 16px;
+  }
+  .dedic {
+    font-size: 12px;
+    letter-spacing: 0.3em;
+    color: var(--mist);
+    margin-bottom: 10px;
+  }
+  h1 {
+    font-size: 30px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    margin-bottom: 8px;
+  }
+  .no {
+    font-size: 13px;
+    color: var(--mist);
+    letter-spacing: 0.3em;
+    margin-bottom: 48px;
+  }
+  .wave { margin: 0 auto 48px; display: block; }
+  .quote {
+    font-size: 14px;
+    line-height: 2.1;
+    color: var(--ink);
+    opacity: 0.75;
+    margin-bottom: 48px;
+    white-space: pre-line;
+  }
+  .pending {
+    font-size: 14px;
+    letter-spacing: 0.35em;
+    color: var(--mist);
+  }
+  .pending::after {
+    content: "";
+    display: block;
+    width: 32px;
+    height: 1px;
+    background: var(--line);
+    margin: 20px auto 0;
+  }
+  .date {
+    margin-top: 48px;
+    font-size: 12px;
+    letter-spacing: 0.25em;
+    color: var(--mist);
+  }
+  /* player */
+  .player { display: none; }
+  .player.on { display: block; }
+  .playbtn {
+    width: 72px; height: 72px;
+    border-radius: 50%;
+    border: 1px solid var(--ink);
+    background: transparent;
+    color: var(--ink);
+    font-size: 24px;
+    cursor: pointer;
+    margin: 0 auto 20px;
+    display: flex; align-items: center; justify-content: center;
+    transition: background .2s, color .2s;
+  }
+  .playbtn.playing { background: var(--ink); color: var(--paper); }
+  .bar {
+    width: 100%; height: 2px;
+    background: var(--line);
+    border-radius: 2px;
+    overflow: hidden;
+    cursor: pointer;
+  }
+  .bar > i {
+    display: block; height: 100%; width: 0%;
+    background: var(--ink);
+  }
+  .time {
+    margin-top: 12px;
+    font-size: 12px;
+    color: var(--mist);
+    letter-spacing: 0.15em;
+    font-family: Georgia, serif;
+  }
+  footer {
+    margin-top: 64px;
+    font-size: 11px;
+    letter-spacing: 0.4em;
+    color: var(--mist);
+    opacity: 0.7;
+  }
+</style>
+</head>
+<body>
+  <div class="frame">
+    <div class="kicker" id="kick">睡前故事电台</div>
+    <div class="gu" id="gu"></div>
+    <div class="dedic">讲给柠柠的</div>
+    <h1 id="title"></h1>
+    <div class="no" id="no"></div>
+
+    <svg class="wave" id="wave" width="200" height="24" viewBox="0 0 200 24">
+      <line x1="0" y1="12" x2="200" y2="12" stroke="#D8D2C4" stroke-width="1"/>
+      <g id="bars" stroke="#7A8B99" stroke-width="1.4" stroke-linecap="round"></g>
+    </svg>
+
+    <div class="quote" id="quote"></div>
+
+    <div class="pending" id="pending">本章录制中</div>
+
+    <div class="player" id="player">
+      <button class="playbtn" id="play">▶</button>
+      <div class="bar" id="bar"><i id="prog"></i></div>
+      <div class="time"><span id="cur">0:00</span> · <span id="dur">--:--</span></div>
+      <audio id="audio" preload="metadata"></audio>
+    </div>
+
+    <div class="date" id="date"></div>
+  </div>
+  <footer id="foot">某年某月某章 · 讲给你听</footer>
+
+<script>
+  // 生成装饰声波
+  (function () {
+    const g = document.getElementById('bars');
+    let x = 8, seed = 7;
+    while (x < 192) {
+      seed = (seed * 16807) % 2147483647;
+      const h = 3 + (seed % 16);
+      const l = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+      l.setAttribute('x1', x); l.setAttribute('x2', x);
+      l.setAttribute('y1', 12 - h / 2); l.setAttribute('y2', 12 + h / 2);
+      g.appendChild(l);
+      x += 5 + (seed % 7);
+    }
+  })();
+
+  const params = new URLSearchParams(location.search);
+  const ch = (params.get('ch') || '01').padStart(2, '0');
+
+  // 番外风格 → 页面文案映射
+  const CHAT_STYLES = {
+    sweet:   { label: '蜜糖时刻', foot: '顺便说给你听' },
+    funny:   { label: '胡说八道', foot: '笑完记得睡' },
+    serious: { label: '认真说话', foot: '这些话要紧' },
+    night:   { label: '晚安之后', foot: '睡前最后一句' },
+    chat:    { label: '悄悄话',   foot: '顺便说给你听' }
+  };
+
+  fetch('./stories.json')
+    .then(r => r.json())
+    .then(data => {
+      const pool = data.chapters.concat(data.extras || [], data.blanks || []);
+      const c = pool.find(x => x.id === ch);
+      if (!c) { document.getElementById('title').textContent = '未找到章节'; return; }
+
+      // 番外：按内容风格切换主题
+      if (c.type === 'chat') {
+        const st = CHAT_STYLES[c.style] || CHAT_STYLES.chat;
+        document.body.classList.add('st-' + (c.style || 'chat'));
+        document.getElementById('kick').textContent = '番外 · ' + st.label;
+        document.getElementById('foot').textContent = '某年某月某日 · ' + st.foot;
+        document.title = (c.title || ch) + ' · 番外';
+      }
+
+      // 空白卡：不编号、不留标题，页面留空
+      if (c.type === 'blank') {
+        document.getElementById('no').style.display = 'none';
+        document.getElementById('pending').textContent = '录制中';
+        document.title = '柠柠专属的故事本';
+      }
+
+      document.getElementById('gu').textContent = c.gu || '';
+      document.getElementById('title').textContent = c.title || (c.type === 'blank' ? '' : '待写的一章');
+      document.getElementById('no').textContent = 'No.' + ch;
+      document.getElementById('quote').textContent = c.quote || '';
+      document.getElementById('date').textContent = c.date;
+      document.title = (c.title || ch) + ' · 睡前故事';
+
+      if (c.audio) {
+        const audio = document.getElementById('audio');
+        const play = document.getElementById('play');
+        const prog = document.getElementById('prog');
+        const bar = document.getElementById('bar');
+        const cur = document.getElementById('cur');
+        const dur = document.getElementById('dur');
+        audio.src = './' + c.audio;
+        document.getElementById('pending').style.display = 'none';
+        document.getElementById('player').classList.add('on');
+
+        const fmt = s => isFinite(s) ? Math.floor(s/60) + ':' + String(Math.floor(s%60)).padStart(2,'0') : '--:--';
+        play.onclick = () => audio.paused ? audio.play() : audio.pause();
+        audio.onplay = () => { play.textContent = '❚❚'; play.classList.add('playing'); };
+        audio.onpause = () => { play.textContent = '▶'; play.classList.remove('playing'); };
+        audio.ontimeupdate = () => {
+          prog.style.width = (audio.currentTime / audio.duration * 100 || 0) + '%';
+          cur.textContent = fmt(audio.currentTime);
+        };
+        audio.onloadedmetadata = () => dur.textContent = fmt(audio.duration);
+        bar.onclick = e => {
+          const r = bar.getBoundingClientRect();
+          audio.currentTime = (e.clientX - r.left) / r.width * audio.duration;
+        };
+      }
+    })
+    .catch(() => { document.getElementById('title').textContent = '加载失败，请稍后再扫'; });
+</script>
+</body>
+</html>
