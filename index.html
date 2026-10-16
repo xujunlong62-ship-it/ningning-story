@@ -254,7 +254,18 @@
   })();
 
   // 解锁进度：她扫过的每一章都会被记住（存在她自己手机上，不会上传）
+  // 正式计数从 START_DATE 开始；之前只算预览，不记录，并自动清零
+  const START_DATE = '2026-11-03';
+  function countingStarted() {
+    const now = new Date();
+    const start = new Date(START_DATE + 'T00:00:00');
+    return now >= start;
+  }
   function markUnlocked(id) {
+    if (!countingStarted()) {
+      try { localStorage.removeItem('nn_unlocked'); } catch (e) {}
+      return new Set();
+    }
     try {
       const set = new Set(JSON.parse(localStorage.getItem('nn_unlocked') || '[]'));
       set.add(id);
@@ -264,7 +275,7 @@
   }
   function renderProgress(set, total) {
     const el = document.getElementById('progress');
-    if (!total) { el.style.display = 'none'; return; }
+    if (!total || !countingStarted()) { el.style.display = 'none'; return; }
     el.textContent = '已解锁 ' + set.size + ' / ' + total;
   }
 
