@@ -160,6 +160,28 @@
     color: var(--mist);
     opacity: 0.7;
   }
+  /* 解锁进度徽标 */
+  .progress {
+    position: fixed;
+    top: 18px; right: 20px;
+    font-size: 11px;
+    letter-spacing: 0.25em;
+    color: var(--mist);
+    opacity: 0.65;
+    font-family: Georgia, serif;
+  }
+  /* 深夜模式：23:00-5:00 自动切换 */
+  body.night { --paper:#242220; --ink:#D9D3C7; --mist:#8D857A; --line:#3B3833; }
+  body.night .playbtn.playing { background: var(--ink); color:#242220; }
+  body.night .nn.v3 span { -webkit-text-stroke:1px #D9D3C7; }
+  .late {
+    display: none;
+    font-size: 12px;
+    letter-spacing: 0.3em;
+    color: var(--mist);
+    margin-top: 20px;
+  }
+  body.night .late { display: block; }
 </style>
 </head>
 <body>
@@ -187,7 +209,9 @@
     </div>
 
     <div class="date" id="date"></div>
+    <div class="late">这么晚还没睡？</div>
   </div>
+  <div class="progress" id="progress"></div>
   <footer id="foot">某年某月某章 · 讲给你听</footer>
 
 <script>
@@ -223,6 +247,27 @@
   const params = new URLSearchParams(location.search);
   const ch = (params.get('ch') || '01').padStart(2, '0');
 
+  // 深夜模式：23:00 - 5:00 自动生效
+  (function () {
+    const h = new Date().getHours();
+    if (h >= 23 || h < 5) document.body.classList.add('night');
+  })();
+
+  // 解锁进度：她扫过的每一章都会被记住（存在她自己手机上，不会上传）
+  function markUnlocked(id) {
+    try {
+      const set = new Set(JSON.parse(localStorage.getItem('nn_unlocked') || '[]'));
+      set.add(id);
+      localStorage.setItem('nn_unlocked', JSON.stringify([...set]));
+      return set;
+    } catch (e) { return new Set([id]); }
+  }
+  function renderProgress(set, total) {
+    const el = document.getElementById('progress');
+    if (!total) { el.style.display = 'none'; return; }
+    el.textContent = '已解锁 ' + set.size + ' / ' + total;
+  }
+
   // 番外风格 → 页面文案映射
   const CHAT_STYLES = {
     sweet:   { label: '蜜糖时刻', foot: '顺便说给你听' },
@@ -239,12 +284,25 @@
       const c = pool.find(x => x.id === ch);
       if (!c) { document.getElementById('title').textContent = '未找到章节'; return; }
 
+      // 解锁进度：只统计正篇 38 章
+      const total = data.chapters.length;
+      const set = markUnlocked(ch);
+      renderProgress(set, total);
+
+      // 背面小尾巴同步到网页（与卡片一致，55 张各一句）
+      const CH_FOOT = {"01":"从困境里捞出来的希望，给你","02":"规矩是死的，你是活的","03":"跑掉的不是蛊，是坏心情","04":"把面具摘下来，这里有热茶","05":"太阳晒着，月亮陪着你","06":"四只猴子都没你机灵","07":"平凡的我，讲给不平凡的你","08":"虚荣是空的，这一页是满的","09":"九天之高，不敌你一笑","10":"门的另一边，是我","11":"石人挡路，故事绕行","12":"失败可以，失去你不行","13":"意义不在远方，在耳边","14":"生命蔚蓝，晚安是好颜色","15":"路很长，我一直在","16":"梦要追，觉也要睡","17":"自己的路自己走，我看着","18":"伟大不响，爱很响","19":"跌倒的地方，也能开花","20":"自由如羽，落在你枕边","21":"哭完记得喝口水","22":"恐惧退散，这一页护身","23":"大事小事，都不及你事","24":"勇气充值成功，余额充足","25":"爱这个字，念给你听","26":"坚持住了，就奖励下一章","27":"财富是每晚一个故事","28":"疯，是一种清醒的浪漫","29":"自由万岁，你也万岁","30":"仇恨放下，故事拿起","31":"强者打怪，弱者睡觉","32":"困境到此为止，晚安从这里开始","33":"大力掰开噩梦，温柔放好今晚","34":"努力的姑娘，值得这一章","35":"壁再厚，也隔不住声音","36":"此境有且只有一个听众","37":"光阴带不走的，都录进去了","38":"三十八章讲完了，故事没有"};
+      const EX_FOOT = {"X01":"希望是深夜的备用电池","X02":"第一天的勇气，续杯无限","X03":"勇气对半分，快乐翻倍","X04":"年轮一圈一圈，圈住我们","X05":"歌词会停，喜欢不会","X06":"潮水退了，我没退","X07":"跑调的地方，笑点在此","X08":"不是第五章，是爱你那一章"};
+      const BLANK_FOOT = {"39":"这一页在等一个新故事","40":"未来的某一晚，提前问好","41":"空白不是没有，是还没发生","42":"此处预留：一个没讲过的夜晚","43":"新故事招募中，主角是你","44":"空白页不着急，我们慢慢来","45":"以后某个晚上，这里会响","46":"留给明天，留给以后的你","47":"故事未完，此处续一笔"};
+      const footEl = document.getElementById('foot');
+      if (c.type === 'chat') footEl.textContent = EX_FOOT[c.id] || '';
+      else if (c.type === 'blank') footEl.textContent = BLANK_FOOT[c.id] || '';
+      else footEl.textContent = CH_FOOT[c.id] || '';
+
       // 番外：按内容风格切换主题
       if (c.type === 'chat') {
         const st = CHAT_STYLES[c.style] || CHAT_STYLES.chat;
         document.body.classList.add('st-' + (c.style || 'chat'));
         document.getElementById('kick').textContent = '番外 · ' + st.label;
-        document.getElementById('foot').textContent = '某年某月某日 · ' + st.foot;
         document.title = (c.title || ch) + ' · 番外';
       }
 
